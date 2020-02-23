@@ -31,7 +31,7 @@ let readyMessages = [
   "1",
 ];
 // squat variable
-let numSquats = 0; // parseInt(localStorage.getItem('numSquats'), 10) || 0;
+let numSquats = parseInt(localStorage.getItem('numSquats'), 10) || 0;
 let squatStep = 0;
 const squatStartHeight = videoHeight * 0.25;
 const squatEndHeight = videoHeight * 0.5;
