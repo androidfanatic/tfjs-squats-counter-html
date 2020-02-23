@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>numSquats</title>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /*
+         *  The following loading spinner CSS is from SpinKit project
+         *  https://github.com/tobiasahlin/SpinKit
+         */
+    .sk-spinner-pulse {
+      width: 20px;
+      height: 20px;
+      margin: auto 10px;
+      float: left;
+      background-color: #333;
+      border-radius: 100%;
+      -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
+      animation: sk-pulseScaleOut 1s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-pulseScaleOut {
+      0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sk-pulseScaleOut {
+      0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    .spinner-text {
+      float: left;
+    }
+
+    #text {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      color: #000;
+      opacity: 0.6;
+      z-index: 1999;
+    }
+
+    .dg {
+      display: none;
+    }
+
+    #text-output {
+      font-size: 10rem;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dat.gui"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stats.js"></script>
+</head>
+
+<body>
+  <h1 id="text">
+    <span id="text-msg"></span></span><span id="text-output"></pre>
+  </h1>
+  <div id="info" style="display:none"></div>
+  <div id="loading" style="display:flex">
+    <div class="spinner-text">
+      Loading PoseNet model...
+    </div>
+    <div class="sk-spinner sk-spinner-pulse"></div>
+  </div>
+  <div id="main" style="display:none">
+    <video id="video" playsinline style="display: none;"></video>
+    <canvas id="output" />
+  </div>
+  <script src="demo_util.js"></script>
+  <script src="camera.js"></script>
+</body>
+
+</html>
